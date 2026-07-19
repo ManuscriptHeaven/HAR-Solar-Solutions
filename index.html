@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAR Solar Solutions — آپ کا روشن اور سستا مستقبل</title>
+    <meta name="description" content="بجلی کے بھاری بلوں سے ہمیشہ کے لیے نجات پائیں۔ پاکستان بھر میں سستی، قابلِ اعتماد اور ماحول دوست سولر انرجی کے لیے HAR Solar Solutions کا انتخاب کریں۔">
+    
+    <!-- Google Fonts: Noto Sans Arabic for Urdu, Space Grotesk for numbers and headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Background Canvas for Solar Particle Animation -->
+    <canvas id="solar-particles"></canvas>
+    
+    <!-- Custom Cursor Glow effect -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar glass">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-sun fa-spin-slow"></i></span>
+                <span class="logo-text">HAR <span class="accent-text">Solar</span></span>
+            </div>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active" data-i18n="nav-home">مرکزی صفحہ</a>
+                <a href="#about" class="nav-link" data-i18n="nav-about">ہمارے بارے میں</a>
+                <a href="#services" class="nav-link" data-i18n="nav-services">خدمات</a>
+                <a href="#calculator" class="nav-link" data-i18n="nav-calculator">کیلکولیٹر</a>
+                <a href="#why-us" class="nav-link" data-i18n="nav-why-us">ہمیں کیوں؟</a>
+                <a href="#contact" class="nav-link btn-quote-nav" data-i18n="btn-quote-nav">مفت کوٹیشن</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle" class="lang-btn glass-btn" aria-label="Toggle Language">
+                    <i class="fa-solid fa-globe"></i> <span id="lang-text">English</span>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="badge glass" data-i18n="hero-badge">⚡ توانائی کا جدید ترین انقلاب</div>
+                    <h1 class="hero-title" data-i18n="hero-title">
+                        HAR Solar Solutions <br>
+                        <span class="gradient-text">آپ کا روشن اور سستا مستقبل</span>
+                    </h1>
+                    <p class="hero-desc" data-i18n="hero-desc">
+                        بجلی کے بھاری بلوں سے ہمیشہ کے لیے نجات پائیں۔ ہم آپ کے گھر، دفتر اور فیکٹری کے لیے جدید ترین اور مکمل سولر سلوشنز فراہم کرتے ہیں۔
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary ripple" data-i18n="btn-quote">مفت کوٹیشن حاصل کریں</a>
+                        <a href="#calculator" class="btn-secondary glass-btn" data-i18n="btn-calc">بچت کا حساب لگائیں</a>
+                    </div>
+                </div>
+                
+                <!-- Levitating / Anti-Gravity Hero Image Area -->
+                <div class="hero-image-wrapper">
+                    <div class="glowing-orb-bg"></div>
+                    <div class="floating-container">
+                        <img src="assets/images/hero.png" alt="Futuristic Solar Home" class="floating-img hero-main-img" id="hero-img">
+                        <!-- Tiny Levitating Badge -->
+                        <div class="mini-float-badge glass">
+                            <span class="icon-glow"><i class="fa-solid fa-circle-check"></i></span>
+                            <div>
+                                <h4 data-i18n="badge-tier-title">ٹاپ ٹئیر کوالٹی</h4>
+                                <small data-i18n="badge-tier-desc">Tier-1 سولر پینلز</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about-section scroll-reveal">
+            <div class="about-container">
+                <div class="about-image-wrapper">
+                    <div class="glowing-orb-bg cyan-glow"></div>
+                    <div class="floating-container secondary-float">
+                        <img src="assets/images/abstract.png" alt="Abstract Inverter Levitating" class="floating-img about-main-img">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title" data-i18n="about-title">ہم کون ہیں؟</h2>
+                    <div class="section-divider"></div>
+                    <p class="about-desc" data-i18n="about-desc">
+                        HAR Solar Solutions ایک بااعتماد اور مستند سولر انسٹالیشن کمپنی ہے۔ ہمارا مقصد پاکستان بھر میں سستی اور ماحول دوست توانائی کو فروغ دینا ہے۔ ہماری ماہرین کی ٹیم آپ کی ضرورت کے مطابق بہترین ڈیزائن، کوالٹی اور سروس کو یقینی بناتی ہے تاکہ آپ کا سولر سسٹم سالہا سال بہترین کارکردگی دکھا سکے۔
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-card glass">
+                            <h3 class="stat-num">25+</h3>
+                            <p class="stat-label" data-i18n="stat-warranty">سال وارنٹی</p>
+                        </div>
+                        <div class="stat-card glass">
+                            <h3 class="stat-num">1000+</h3>
+                            <p class="stat-label" data-i18n="stat-clients">خوش گاہک</p>
+                        </div>
+                        <div class="stat-card glass">
+                            <h3 class="stat-num">5MW+</h3>
+                            <p class="stat-label" data-i18n="stat-power">انسٹال شدہ پاور</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section scroll-reveal">
+            <div class="container text-center">
+                <h2 class="section-title" data-i18n="services-title">ہماری خدمات</h2>
+                <p class="section-subtitle" data-i18n="services-subtitle">ہم آپ کی ضروریات کے مطابق بہترین اور جدید سولر سسٹمز پیش کرتے ہیں</p>
+                <div class="section-divider center"></div>
+                
+                <div class="services-grid">
+                    <!-- Service 1: Residential Solar -->
+                    <div class="service-card glass tilt-card">
+                        <div class="card-image-container">
+                            <img src="assets/images/hero.png" alt="Residential Solar" class="card-bg-img">
+                            <div class="card-overlay"></div>
+                            <div class="card-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-i18n="service-res-title">رہائشی سولر سسٹمز</h3>
+                            <p data-i18n="service-res-desc">آپ کے گھر کے لیے مکمل طور پر کسٹمائزڈ سولر پینل سسٹمز، جو آپ کی بجلی کی ضروریات کو پورا کرتے ہیں۔</p>
+                            <a href="#contact" class="card-link" data-i18n="learn-more">مزید جانیں <i class="fa-solid fa-arrow-left arrow-icon"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Commercial Solar -->
+                    <div class="service-card glass tilt-card">
+                        <div class="card-image-container">
+                            <img src="assets/images/commercial.png" alt="Commercial Solar" class="card-bg-img">
+                            <div class="card-overlay"></div>
+                            <div class="card-icon"><i class="fa-solid fa-industry"></i></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-i18n="service-com-title">کمرشل سولر سسٹمز</h3>
+                            <p data-i18n="service-com-desc">کاروبار اور فیکٹریوں کے لیے ہیوی ڈیوٹی سولر سلوشنز تاکہ آپ کی پیداواری لاگت میں نمایاں کمی آسکے۔</p>
+                            <a href="#contact" class="card-link" data-i18n="learn-more">مزید جانیں <i class="fa-solid fa-arrow-left arrow-icon"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: Maintenance -->
+                    <div class="service-card glass tilt-card">
+                        <div class="card-image-container">
+                            <img src="assets/images/maintenance.png" alt="Maintenance" class="card-bg-img">
+                            <div class="card-overlay"></div>
+                            <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-i18n="service-maint-title">مینٹیننس اور سروسنگ</h3>
+                            <p data-i18n="service-maint-desc">پرانے سسٹمز کی صفائی، مرمت اور کارکردگی کو بہتر بنانے کے لیے ہماری آفٹر سیلز سروسز۔</p>
+                            <a href="#contact" class="card-link" data-i18n="learn-more">مزید جانیں <i class="fa-solid fa-arrow-left arrow-icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Solar Savings Calculator -->
+        <section id="calculator" class="calculator-section scroll-reveal">
+            <div class="calc-container glass">
+                <div class="calc-header text-center">
+                    <span class="calc-badge"><i class="fa-solid fa-calculator"></i></span>
+                    <h2 class="section-title" data-i18n="calc-title">سولر بچت کیلکولیٹر</h2>
+                    <p class="section-subtitle" data-i18n="calc-subtitle">اپنے بجلی کے بل کے مطابق سولر سسٹم کے سائز اور متوقع بچت کا فوری اندازہ لگائیں</p>
+                </div>
+                
+                <div class="calc-body">
+                    <!-- Calculator Inputs -->
+                    <div class="calc-inputs">
+                        <div class="form-group">
+                            <label for="bill-input" data-i18n="calc-label-bill">اپنا اوسط ماہانہ بجلی کا بل لکھیں (PKR):</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">PKR</span>
+                                <input type="number" id="bill-input" value="30000" min="5000" max="1000000" step="1000" class="glass-input">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group slider-group">
+                            <div class="slider-labels">
+                                <label for="bill-slider" data-i18n="calc-label-slider">بل کو تبدیل کریں:</label>
+                                <span class="slider-val" id="slider-val">30,000 PKR</span>
+                            </div>
+                            <input type="range" id="bill-slider" min="5000" max="200000" step="5000" value="30000" class="glow-slider">
+                        </div>
+
+                        <div class="calculator-info-box glass">
+                            <i class="fa-solid fa-lightbulb info-icon"></i>
+                            <p data-i18n="calc-info-note">یہ تخمینہ اوسطاً 50 روپے فی یونٹ کی شرح اور سالانہ اوسط شمسی کارکردگی پر مبنی ہے۔ نیپرا نیٹ میٹرنگ کے فوائد بھی شامل ہیں۔</p>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Outputs -->
+                    <div class="calc-outputs">
+                        <div class="output-grid">
+                            <!-- System Size -->
+                            <div class="output-card glass glow-accent">
+                                <div class="output-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+                                <div class="output-data">
+                                    <h4 data-i18n="calc-out-size">سسٹم کا سائز</h4>
+                                    <p class="output-value"><span id="out-size">6.0</span> <span class="unit">kW</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Monthly Savings -->
+                            <div class="output-card glass glow-solar">
+                                <div class="output-icon"><i class="fa-solid fa-wallet"></i></div>
+                                <div class="output-data">
+                                    <h4 data-i18n="calc-out-monthly">ماہانہ بچت</h4>
+                                    <p class="output-value"><span class="unit">PKR</span> <span id="out-monthly">28,500</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Payback Period -->
+                            <div class="output-card glass glow-cyan">
+                                <div class="output-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                                <div class="output-data">
+                                    <h4 data-i18n="calc-out-payback">پیسوں کی واپسی کا دورانیہ</h4>
+                                    <p class="output-value"><span id="out-payback">3.2</span> <span class="unit" data-i18n="calc-years">سال</span></p>
+                                </div>
+                            </div>
+
+                            <!-- 25 Years Savings -->
+                            <div class="output-card glass glow-green">
+                                <div class="output-icon"><i class="fa-solid fa-chart-line"></i></div>
+                                <div class="output-data">
+                                    <h4 data-i18n="calc-out-lifetime">25 سالہ بچت</h4>
+                                    <p class="output-value"><span class="unit">PKR</span> <span id="out-lifetime">8.5M</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="why-us" class="why-section scroll-reveal">
+            <div class="container text-center">
+                <h2 class="section-title" data-i18n="why-title">ہمیں کیوں منتخب کریں؟</h2>
+                <p class="section-subtitle" data-i18n="why-subtitle">ہم معیار، بھروسے اور بہترین خدمات پر کوئی سمجھوتہ نہیں کرتے</p>
+                <div class="section-divider center"></div>
+                
+                <div class="why-grid">
+                    <!-- Reason 1 -->
+                    <div class="why-card glass">
+                        <div class="why-icon-box"><i class="fa-solid fa-award"></i></div>
+                        <h3 data-i18n="why-r1-title">اعلیٰ معیار کا سامان</h3>
+                        <p data-i18n="why-r1-desc">ہم صرف بین الاقوامی معیار کی ٹاپ ٹئیر (Tier-1) برانڈز استعمال کرتے ہیں۔</p>
+                    </div>
+
+                    <!-- Reason 2 -->
+                    <div class="why-card glass">
+                        <div class="why-icon-box"><i class="fa-solid fa-user-gear"></i></div>
+                        <h3 data-i18n="why-r2-title">پیشہ ورانہ انسٹالیشن</h3>
+                        <p data-i18n="why-r2-desc">ہماری انجینئرز کی ٹیم ہر کام کو تکنیکی مہارت اور حفاظت کے ساتھ مکمل کرتی کرتی ہے۔</p>
+                    </div>
+
+                    <!-- Reason 3 -->
+                    <div class="why-card glass">
+                        <div class="why-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3 data-i18n="why-r3-title">بہترین وارنٹی</h3>
+                        <p data-i18n="why-r3-desc">پینلز اور انورٹرز پر طویل مدتی وارنٹی کی بہترین سہولت فراہم کی جاتی ہے۔</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section / Form -->
+        <section id="contact" class="contact-section scroll-reveal">
+            <div class="contact-container glass">
+                <div class="contact-grid">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h2 class="section-title" data-i18n="contact-title">مفت کوٹیشن حاصل کریں</h2>
+                        <p class="contact-subtitle" data-i18n="contact-subtitle">آج ہی اپنے سولر سسٹم کے لیے رابطہ کریں اور بجلی کے بھاری بلوں سے چھٹکارا حاصل کریں!</p>
+                        <div class="section-divider"></div>
+                        
+                        <ul class="contact-list">
+                            <li>
+                                <span class="list-icon"><i class="fa-solid fa-phone"></i></span>
+                                <div>
+                                    <h4 data-i18n="c-phone">فون نمبر</h4>
+                                    <p>+92 300 1234567</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon"><i class="fa-solid fa-envelope"></i></span>
+                                <div>
+                                    <h4 data-i18n="c-email">ای میل</h4>
+                                    <p>info@harsolar.com</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="list-icon"><i class="fa-solid fa-location-dot"></i></span>
+                                <div>
+                                    <h4 data-i18n="c-address">دفتر کا پتہ</h4>
+                                    <p data-i18n="c-address-val">گلبرگ تھری، لاہور، پاکستان</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <form id="quote-form" class="quote-form">
+                            <div class="form-row">
+                                <div class="form-group-float">
+                                    <input type="text" id="form-name" required placeholder=" " class="glass-input-float">
+                                    <label for="form-name" data-i18n="f-name">آپ کا نام</label>
+                                </div>
+                                <div class="form-group-float">
+                                    <input type="tel" id="form-phone" required placeholder=" " class="glass-input-float">
+                                    <label for="form-phone" data-i18n="f-phone">فون نمبر</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group-float">
+                                <input type="email" id="form-email" required placeholder=" " class="glass-input-float">
+                                <label for="form-email" data-i18n="f-email">ای میل ایڈریس</label>
+                            </div>
+
+                            <div class="form-group-float">
+                                <select id="form-type" class="glass-input-float select-input" required>
+                                    <option value="residential" data-i18n="opt-res">رہائشی سولر سسٹم (Residential)</option>
+                                    <option value="commercial" data-i18n="opt-com">کمرشل سولر سسٹم (Commercial)</option>
+                                    <option value="maintenance" data-i18n="opt-maint">مینٹیننس اور سروس (Maintenance)</option>
+                                </select>
+                                <label for="form-type" class="select-label" data-i18n="f-type">سسٹم کی قسم</label>
+                            </div>
+
+                            <div class="form-group-float">
+                                <textarea id="form-message" rows="4" placeholder=" " class="glass-input-float textarea-input"></textarea>
+                                <label for="form-message" data-i18n="f-msg">مزید معلومات یا تفصیلات</label>
+                            </div>
+
+                            <button type="submit" class="btn-primary btn-submit ripple" id="btn-submit-form">
+                                <span id="btn-submit-text" data-i18n="f-btn-submit">درخواست جمع کروائیں</span>
+                                <span class="btn-submit-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                            </button>
+                        </form>
+                        
+                        <!-- Success Message Modal/Alert -->
+                        <div id="form-success" class="form-success glass hide">
+                            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <h3 data-i18n="success-title">بہت شکریہ!</h3>
+                            <p data-i18n="success-msg">آپ کی درخواست موصول ہو گئی ہے۔ ہمارا سولر کونسلر جلد ہی آپ سے رابطہ کرے گا۔</p>
+                            <button id="success-close" class="btn-secondary glass-btn" data-i18n="btn-close">بند کریں</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-sun"></i></span>
+                    <span class="logo-text">HAR <span class="accent-text">Solar</span></span>
+                </div>
+                <p class="footer-desc" data-i18n="footer-desc">
+                    بجلی کے بھاری بلوں سے نجات اور روشن پاکستان کے لیے آپ کا بااعتماد اور مستند پارٹنر۔
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <h4 data-i18n="foot-links-title">فوری روابط</h4>
+                    <ul>
+                        <li><a href="#home" data-i18n="nav-home">مرکزی صفحہ</a></li>
+                        <li><a href="#about" data-i18n="nav-about">ہمارے بارے میں</a></li>
+                        <li><a href="#services" data-i18n="nav-services">خدمات</a></li>
+                        <li><a href="#calculator" data-i18n="nav-calculator">بچت کیلکولیٹر</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="foot-services-title">ہماری خدمات</h4>
+                    <ul>
+                        <li><a href="#services" data-i18n="service-res-title">رہائشی سولر سسٹمز</a></li>
+                        <li><a href="#services" data-i18n="service-com-title">کمرشل سولر سسٹمز</a></li>
+                        <li><a href="#services" data-i18n="service-maint-title">صفائی اور مرمت</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 HAR Solar Solutions. <span data-i18n="footer-copy">جملہ حقوق محفوظ ہیں۔</span></p>
+        </div>
+    </footer>
+
+    <!-- Custom App Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
