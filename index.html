@@ -420,7 +420,69 @@
         </div>
     </footer>
 
+    <!-- ============================================================
+         HAR Solar AI Chatbot Widget
+         ============================================================ -->
+    <div id="chatbot-widget" class="chatbot-widget">
+
+        <!-- Chat Toggle Button (floating sun icon) -->
+        <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Open Solar Assistant">
+            <span class="chat-toggle-icon open-icon">
+                <i class="fa-solid fa-solar-panel"></i>
+            </span>
+            <span class="chat-toggle-icon close-icon hide">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+            <span class="chat-notification-dot" id="chat-dot"></span>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="chat-window glass" id="chat-window">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">
+                        <i class="fa-solid fa-sun"></i>
+                        <span class="chat-online-dot"></span>
+                    </div>
+                    <div>
+                        <h4 class="chat-name">HAR Solar Assistant</h4>
+                        <span class="chat-status" id="chat-status-text">Online • Ready to help</span>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="chat-close-btn" aria-label="Close Chat">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div class="chat-messages" id="chat-messages">
+                <!-- Initial welcome message injected by JS -->
+            </div>
+
+            <!-- Chat Input Bar -->
+            <div class="chat-input-bar">
+                <input
+                    type="text"
+                    id="chat-input"
+                    class="chat-input"
+                    placeholder="Solar ke baare mein kuch puchein..."
+                    autocomplete="off"
+                    maxlength="500"
+                >
+                <button id="chat-send-btn" class="chat-send-btn" aria-label="Send Message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+            <p class="chat-powered-by">Powered by HAR AI • Groq LLaMA</p>
+        </div>
+    </div>
+
     <!-- Custom App Script -->
     <script src="js/app.js"></script>
+    <!-- Config (local only, gitignored) -->
+    <script src="js/config.js"></script>
+    <!-- Chatbot Script -->
+    <script src="js/chatbot.js"></script>
 </body>
 </html>

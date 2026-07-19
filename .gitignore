@@ -1,0 +1,3 @@
+# HAR Solar Solutions — Git Ignore
+# Secret config with API keys — never commit this
+js/config.js
