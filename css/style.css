@@ -1511,31 +1511,37 @@ html[dir="ltr"] .chatbot-widget {
     50% { opacity: 0.6; transform: scale(0.8); }
 }
 
-/* Chat Window */
+/* Chat Window — Fully Responsive */
 .chat-window {
-    position: absolute;
-    bottom: 80px;
-    width: 360px;
-    height: 520px;
+    position: fixed;
+    bottom: 90px;
+    /* Scalable width: min 300px, ideal 380px, max 440px on desktop */
+    width: clamp(300px, 90vw, 440px);
+    /* Scalable height: min 400px, ideal 560px, max 80vh */
+    height: clamp(400px, 70vh, 580px);
     border-radius: 24px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(245, 158, 11, 0.15);
-    transform-origin: bottom right;
-    transform: scale(0.8) translateY(20px);
+    transform: scale(0.85) translateY(20px);
     opacity: 0;
     pointer-events: none;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
 }
 
+/* Position: RTL page → chat on LEFT side */
 html[dir="rtl"] .chat-window {
-    left: 0;
+    left: 1.5rem;
+    right: auto;
     transform-origin: bottom left;
 }
+/* Position: LTR page → chat on RIGHT side */
 html[dir="ltr"] .chat-window {
-    right: 0;
+    right: 1.5rem;
+    left: auto;
     transform-origin: bottom right;
 }
 
@@ -1837,16 +1843,73 @@ html[dir="rtl"] .chat-msg.user .msg-bubble {
     flex-shrink: 0;
 }
 
-/* Mobile chat sizing */
-@media (max-width: 480px) {
+/* ==========================================
+   Responsive Chatbot Breakpoints
+   ========================================== */
+
+/* Small phones (< 400px) — almost full screen */
+@media (max-width: 400px) {
+    .chatbot-widget {
+        bottom: 1rem;
+    }
+    html[dir="rtl"] .chatbot-widget { left: 1rem; }
+    html[dir="ltr"] .chatbot-widget { right: 1rem; }
+
     .chat-window {
         width: calc(100vw - 2rem);
-        height: 70vh;
+        height: calc(100dvh - 110px); /* dvh for mobile browser toolbar */
+        border-radius: 16px;
+        bottom: 76px;
     }
-    html[dir="rtl"] .chat-window {
-        left: -0.5rem;
+    html[dir="rtl"] .chat-window { left: 1rem; }
+    html[dir="ltr"] .chat-window { right: 1rem; }
+}
+
+/* Normal phones (400–640px) */
+@media (min-width: 401px) and (max-width: 640px) {
+    .chat-window {
+        width: calc(100vw - 3rem);
+        height: calc(100dvh - 130px);
+        border-radius: 20px;
+        bottom: 82px;
     }
-    html[dir="ltr"] .chat-window {
-        right: -0.5rem;
+    html[dir="rtl"] .chat-window { left: 1.5rem; }
+    html[dir="ltr"] .chat-window { right: 1.5rem; }
+}
+
+/* Tablets (641–1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .chat-window {
+        width: clamp(320px, 50vw, 420px);
+        height: clamp(440px, 65vh, 560px);
     }
+}
+
+/* Large desktops (> 1400px) */
+@media (min-width: 1400px) {
+    .chat-window {
+        width: 440px;
+        height: 580px;
+    }
+}
+
+/* ==========================================
+   Message Bubble Text Direction / Alignment
+   ========================================== */
+
+/* Roman Urdu or English — Left to Right */
+.msg-bubble.ltr {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: embed;
+}
+
+/* Urdu Nastaliq script — Right to Left */
+.msg-bubble.rtl {
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: embed;
+    font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', serif;
+    font-size: 0.95rem;
+    line-height: 1.8;
 }

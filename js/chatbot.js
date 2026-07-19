@@ -100,6 +100,17 @@ Never mix languages in a single reply. Match EXACTLY what the user writes.
 
 
     // ——————————————————————————————————————
+    // 1b. LANGUAGE DIRECTION DETECTOR
+    // Returns 'rtl' if text contains Urdu/Arabic script,
+    // returns 'ltr' for Roman Urdu or English.
+    // ——————————————————————————————————————
+    function detectDir(text) {
+        // Unicode range for Arabic/Urdu script characters
+        const urduRegex = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/;
+        return urduRegex.test(text) ? 'rtl' : 'ltr';
+    }
+
+    // ——————————————————————————————————————
     // 2. DOM ELEMENTS
     // ——————————————————————————————————————
     const toggleBtn    = document.getElementById('chat-toggle-btn');
@@ -178,7 +189,9 @@ Never mix languages in a single reply. Match EXACTLY what the user writes.
         const bubbleWrap = document.createElement('div');
 
         const bubble = document.createElement('div');
-        bubble.className = 'msg-bubble';
+        // Auto-detect direction: Urdu script → rtl (right-align), otherwise → ltr (left-align)
+        const dir = detectDir(text);
+        bubble.className = `msg-bubble ${dir}`;
         bubble.innerHTML = text.replace(/\n/g, '<br>');
 
         bubbleWrap.appendChild(bubble);
@@ -214,7 +227,9 @@ Never mix languages in a single reply. Match EXACTLY what the user writes.
         avatar.innerHTML = '<i class="fa-solid fa-user"></i>';
 
         const bubble = document.createElement('div');
-        bubble.className = 'msg-bubble';
+        // Auto-detect direction: Urdu script → rtl (right-align), otherwise → ltr (left-align)
+        const dir = detectDir(text);
+        bubble.className = `msg-bubble ${dir}`;
         bubble.textContent = text;
 
         wrapper.appendChild(avatar);
