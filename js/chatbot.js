@@ -8,10 +8,14 @@
     // ——————————————————————————————————————
     // 1. CONFIG
     // API key is loaded from js/config.js (not committed to Git)
+    // Key is read lazily at call-time so config.js timing doesn't matter
     // ——————————————————————————————————————
-    const GROQ_API_KEY  = (window.HAR_CONFIG && window.HAR_CONFIG.groqKey) || '';
     const GROQ_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
-    const MODEL         = 'llama3-8b-8192';
+    const MODEL         = 'llama-3.1-8b-instant'; // Updated: correct Groq model name
+
+    function getApiKey() {
+        return (window.HAR_CONFIG && window.HAR_CONFIG.groqKey) || '';
+    }
 
     // System prompt — trains the bot as a HAR Solar expert
     const SYSTEM_PROMPT = `You are "HAR Solar Assistant", an expert AI chatbot for HAR Solar Solutions — a professional solar energy installation company based in Lahore, Pakistan.
@@ -235,11 +239,23 @@ Your job is to help potential customers understand solar energy, HAR Solar's ser
         statusText.classList.add('thinking');
 
         try {
+            // Read key lazily at call time
+            const apiKey = getApiKey();
+
+            // Guard: key not loaded yet
+            if (!apiKey) {
+                removeTypingIndicator();
+                addBotMessage(
+                    '⚠️ API key nahi mili. Kindly js/config.js file check karein aur ensure karein ke window.HAR_CONFIG.groqKey set hai.'
+                );
+                return;
+            }
+
             const response = await fetch(GROQ_ENDPOINT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${GROQ_API_KEY}`
+                    'Authorization': `Bearer ${apiKey}`
                 },
                 body: JSON.stringify({
                     model: MODEL,
@@ -250,14 +266,18 @@ Your job is to help potential customers understand solar energy, HAR Solar's ser
                 })
             });
 
+            // Parse error details if request fails
             if (!response.ok) {
-                throw new Error(`API Error: ${response.status}`);
+                let errBody = '';
+                try { errBody = JSON.stringify(await response.json()); } catch(_) {}
+                console.error(`Groq API ${response.status}:`, errBody);
+                throw new Error(`HTTP ${response.status}: ${errBody}`);
             }
 
             const data = await response.json();
             const reply = data.choices[0]?.message?.content?.trim();
 
-            if (!reply) throw new Error('Empty response');
+            if (!reply) throw new Error('Empty response from Groq');
 
             // Push assistant reply to history
             messages.push({ role: 'assistant', content: reply });
@@ -267,10 +287,11 @@ Your job is to help potential customers understand solar energy, HAR Solar's ser
             addBotMessage(reply);
 
         } catch (err) {
-            console.error('Chatbot error:', err);
+            console.error('Chatbot error:', err.message);
             removeTypingIndicator();
+            // Show actual error details to help debug
             addBotMessage(
-                "Sorry, abhi kuch technical masla aa gaya. Please thodi der baad try karein ya humein directly call karein:\n📞 +92 300 1234567"
+                `❌ Error: ${err.message}\n\nPlease call us directly:\n📞 +92 300 1234567`
             );
         } finally {
             isLoading = false;
