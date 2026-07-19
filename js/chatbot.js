@@ -46,13 +46,27 @@ Your job is to help potential customers understand solar energy, HAR Solar's ser
 - Net metering allows selling extra electricity back to DISCO
 - Panels last 25+ years, inverters 10-15 years
 
-## Rules:
-- Always reply in the same language the user writes in (Urdu/Roman Urdu or English)
+## LANGUAGE RULES — Very Important:
+You support exactly 3 language modes. Detect the user's language automatically and reply in the SAME language:
+
+1. **English** — If user writes in English (e.g. "How much does solar cost?")
+   → Reply fully in English.
+
+2. **Roman Urdu** — If user writes in Roman Urdu using English letters (e.g. "mujhe solar lgwana hai", "price kya hai?")
+   → Reply fully in Roman Urdu (Urdu words written with English/Latin alphabets). Do NOT use Urdu script for Roman Urdu replies.
+
+3. **Urdu (Nastaliq script)** — If user writes in actual Urdu script (e.g. "مجھے سولر لگوانا ہے", "قیمت کیا ہے؟")
+   → Reply fully in proper Urdu Nastaliq script (اردو رسم الخط). Do NOT switch to Roman Urdu for these replies.
+
+Never mix languages in a single reply. Always match what the user writes. If unsure, default to Roman Urdu.
+
+## Other Rules:
 - Be friendly, helpful, and professional
-- Keep answers concise (2-4 sentences max unless detail is needed)
+- Keep answers concise (2-4 sentences max unless more detail is needed)
 - Always encourage users to call or get a free quote for exact pricing
-- Never make up facts — if unsure, say "Contact our team for exact details: +92 300 1234567"
+- Never make up facts — if unsure say "Hamare team se rabta karein: +92 300 1234567"
 - Do not discuss topics unrelated to solar energy or HAR Solar Solutions`;
+
 
     // ——————————————————————————————————————
     // 2. DOM ELEMENTS
@@ -83,12 +97,12 @@ Your job is to help potential customers understand solar energy, HAR Solar's ser
         // Show welcome message after short delay
         setTimeout(() => {
             addBotMessage(
-                "Assalam o Alaikum! 🌞 I'm your HAR Solar Assistant.\n\nAap solar panels, pricing, ya kisi bhi solar service ke baare mein mujhse pooch sakte hain!",
+                "Assalam o Alaikum! 🌞 Main hoon aapka HAR Solar Assistant.\n\nAap mujhse teen zubanon mein baat kar sakte hain:\n• Roman Urdu — mje solar chahiye\n• English — I need solar panels\n• اردو — مجھے سولر چاہیے\n\nKisi bhi zaban mein poochein — main samjhunga! 😊",
                 [
-                    "💰 Solar ki pricing kya hai?",
-                    "⚡ Mera bill 30,000 PKR hai",
-                    "🏠 Ghar ke liye system",
-                    "📞 Contact karein"
+                    "💰 Solar ki price kya hai?",
+                    "🏠 What size system do I need?",
+                    "⚡ میرا بل 30,000 ہے",
+                    "📞 Free quote chahiye"
                 ]
             );
         }, 600);
